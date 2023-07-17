@@ -1,4 +1,5 @@
 import {ChangeEvent, useState} from 'react';
+import {v1} from "uuid";
 
 
 export const HW3 = () => {
@@ -11,25 +12,28 @@ export const HW3 = () => {
     // - приложение должно компилироваться и запускаться в браузере
 
     type TaskPropsType = {
-        id:number
+        id:string
         title:string
         isDone:boolean
     }
-    const [tasks, setTasks] = useState([
-        {id: 1, title: 'zariadka', isDone: false},
-        {id: 2, title: 'zavtrak', isDone: false},
-        {id: 3, title: 'lesson1', isDone: false}
-    ]
-    )
-    const addTask = (currentText:string) => {
-        const newTask = {id: 3, title: currentText, isDone: false}
-        setTasks([newTask, ...tasks])
-    }
+    // const [tasks, setTasks] = useState([
+    //      {id: v1(), title: 'zariadka', isDone: false},
+    //     // {id: v1(), title: 'zavtrak', isDone: false},
+    //     // {id: v1(), title: 'lesson1', isDone: false}
+    // ]
+    // )
+
 
     let [currentText, setCurrentText] = useState('');
+
     const [texts, setTexts] = useState<string[]>([
         'То, что вы делаете по ночам, то и делает вас богатым. (Аль Капоне)',
     ]);
+
+    const addTask = (currentText:string) => {
+//        const newTexts = {currentText}
+        setTexts([currentText, ...texts])
+    }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         currentText = event.currentTarget.value
@@ -47,7 +51,7 @@ export const HW3 = () => {
     };
 
     return (
-        <div id={'hw03'}>
+        <div id={'hw03'}><span>hw3</span>
             {currentText ? (
                 <h1 id={'hw03-text'}>{currentText}</h1>
             ) : (
@@ -61,11 +65,11 @@ export const HW3 = () => {
             <h1 style={{marginTop: '50px'}}>СПИСОК ДЕЛ НА ДЕНЬ:</h1>
 
             <ol id={'hw03-tasks'}>
-              {tasks.map((el, index) => {
+              {texts.map((el, index) => {
                 return (
                   <li key={index} id={`hw03-task-${index}`}>
-                      <input type='checkbox' checked={el.isDone}/>
-                    {el.title}
+                      {/*//<input type='checkbox' checked={el.isDone}/>*/}
+                    {el}
                   </li>
                 );
               })}
