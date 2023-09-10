@@ -27,14 +27,14 @@ export const HW4 = () => {
       {currentText ? (
         <h1 id={'hw04-text'}>{currentText}</h1>
       ) : (
-        <h1 id={'hw04-default-text'}>Здесь появится новое дело</h1>
+        <h1 id={'hw04-default-text'}>There will be a new Task</h1>
       )}
 
       <Input currentText={currentText} setCurrentText={setCurrentText} handleSave={handleSave}/>
 
       <Button name={'save'} callBack={handleSave} />
 
-      <h1 style={{ marginTop: '50px' }}>СПИСОК ДЕЛ НА ДЕНЬ:</h1>
+      <h1 style={{ marginTop: '50px' }}>TODOLIST:</h1>
 
       <ol id={'hw04-tasks'}>
         {texts.map((el, index) => {
